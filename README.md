@@ -100,4 +100,6 @@ module "iam-vpc-eks-modules" {
 
 terraform init
 terraform plan
-terraform apply
+terraform apply --auto-approve
+
+aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw eks_cluster_id)
